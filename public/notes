@@ -1,0 +1,11 @@
+The series of events that happen from mounting of a React component to its unmounting
+
+1) Mounting -- birth of your component.
+2) Update -- Growth of component.
+3) Unmount -- death of component.
+
+
+ComponentDidMount -- runs after render method is called
+ComponentDidUpdate -- whenever component is updated
+ComponentWillUnmount -- called just before component is unmounted and destroyed
+

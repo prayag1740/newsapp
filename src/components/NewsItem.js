@@ -14,7 +14,7 @@ export class NewsItem extends Component {
           <h5 className="card-title">{title}</h5>
           <p className="card-text">{description}</p>
           <a href={newsUrl} rel="noreferrer"  target='_blank' className="btn btn-sm btn-primary">Read More</a>
-          <p className="card-text mt-2"><small class="text-muted">By {author? author : 'Unknown'} on {date}</small></p>
+          <p className="card-text mt-2"><small className="text-muted">By {author? author : 'Unknown'} on {date}</small></p>
         </div>
       </div>
       </div>
