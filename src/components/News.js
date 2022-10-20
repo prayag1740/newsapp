@@ -54,7 +54,7 @@ export class News extends Component {
         this.props.setProgress(10) ;
         let todayDate = this.getCurrentDate();
         const url =
-            `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&from=${todayDate}&sortBy=publishedAt&apiKey=7d248d9c8ea64fa6a4691432a30a74ac&pageSize=${this.props.pageSize}&page=` +
+            `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&from=${todayDate}&sortBy=publishedAt&apiKey=${this.props.apiKey}&pageSize=${this.props.pageSize}&page=` +
             page;
         console.log(url);
         this.setState({ loading: true });
@@ -83,7 +83,7 @@ export class News extends Component {
         let todayDate = this.getCurrentDate();
         let newPage = this.state.page + 1
         const url =
-            `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&from=${todayDate}&sortBy=publishedAt&apiKey=7d248d9c8ea64fa6a4691432a30a74ac&pageSize=${this.props.pageSize}&page=` +
+            `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&from=${todayDate}&sortBy=publishedAt&apiKey=${this.props.apiKey}&pageSize=${this.props.pageSize}&page=` +
             newPage;
         console.log(url);
         let data = await fetch(url);
