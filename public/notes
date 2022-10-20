@@ -9,3 +9,14 @@ ComponentDidMount -- runs after render method is called
 ComponentDidUpdate -- whenever component is updated
 ComponentWillUnmount -- called just before component is unmounted and destroyed
 
+
+Hooks -- features of class based components in function based
+
+useState -- for updating state & updating initial value of state
+useEffect -- works similar to componentdidupdate
+useContext -- 
+useRef -- 
+
+MERN stack
+MongoDB Express React NodeJS
+Express -- Node.js web framework
