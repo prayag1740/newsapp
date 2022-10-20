@@ -18,17 +18,21 @@ export default class App extends Component {
   apiKey = process.env.REACT_APP_NEWS_API_KEY
 
 
-  state = {progress: 0}
+  state = {progress: 0, searchText: ''}
 
   setProgress = (progress) => {
     this.setState({progress: progress})
+  }
+
+  setSearchText = (searchText) => {
+    this.setState({searchText: searchText})
   }
 
   render() {
     return (
       <div>
         <Router>
-        <NavBar />
+        <NavBar searchText={this.setSearchText} />
         <LoadingBar
         color='#f11946'
         progress={this.state.progress}
@@ -43,6 +47,7 @@ export default class App extends Component {
           <Route exact path='/science' element={<News apiKey={this.apiKey} setProgress={this.setProgress} key="science" pageSize={this.pageSize} country={'in'} category={'science'} />}></Route>
           <Route exact path='/sports' element={<News apiKey={this.apiKey} setProgress={this.setProgress} key='sports' pageSize={this.pageSize} country={'in'} category={'sports'} />}></Route>
           <Route exact path='/technology' element={<News apiKey={this.apiKey} setProgress={this.setProgress} key='technology' pageSize={this.pageSize} country={'in'} category={'technology'} />}></Route>
+          <Route exact path='/search' element={<News searchText={this.state.searchText} apiKey={this.apiKey} setProgress={this.setProgress} key='search' pageSize={2} country={'in'} category={'general'} />}></Route>
         </Routes>
         </Router>
       </div>

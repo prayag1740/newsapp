@@ -50,12 +50,20 @@ export class News extends Component {
         this.fetchNewsData(this.state.page - 1);
     };
 
-    async fetchNewsData(page) {
-        this.props.setProgress(10) ;
+    getNewsAPIUrl(page) {
         let todayDate = this.getCurrentDate();
-        const url =
-            `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&from=${todayDate}&sortBy=publishedAt&apiKey=${this.props.apiKey}&pageSize=${this.props.pageSize}&page=` +
-            page;
+        console.log(this.props.searchText)
+        let url =
+        `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&from=${todayDate}&sortBy=publishedAt&apiKey=${this.props.apiKey}&pageSize=${this.props.pageSize}&page=` + page; 
+        if (this.props.searchText) {
+            url = url + `&q=${this.props.searchText}`
+        }
+        return url;
+    }
+
+    async fetchNewsData() {
+        this.props.setProgress(10) ;
+        let url = this.getNewsAPIUrl(this.state.page);
         console.log(url);
         this.setState({ loading: true });
         let data = await fetch(url);

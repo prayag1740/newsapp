@@ -3,6 +3,11 @@ import {Link} from 'react-router-dom'
 
 export class NavBar extends Component {
 
+    constructor(props) {
+        super(props) ;
+        this.textInput = React.createRef() ;
+    }
+
   render() {
     return (
       <div>
@@ -24,6 +29,12 @@ export class NavBar extends Component {
         <li className="nav-item"><Link className="nav-link" to="/sports">Sports</Link></li>
         <li className="nav-item"><Link className="nav-link" to="/technology">Technology</Link></li>
       </ul>
+      <form className="d-flex" role="search">
+        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" ref={this.textInput} />
+        <Link to="/search">
+        <button className="btn btn-outline-success" type="submit" onClick={() => this.props.searchText(this.textInput.current.value)}>Search</button>
+        </Link>
+      </form>
     </div>
   </div>
 </nav>
