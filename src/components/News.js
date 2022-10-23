@@ -87,13 +87,11 @@ export class News extends Component {
     }
 
     fetchMoreData = async() => {
-        this.setState({page : this.state.page + 1});
         let todayDate = this.getCurrentDate();
-        let newPage = this.state.page + 1
         const url =
-            `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&from=${todayDate}&sortBy=publishedAt&apiKey=${this.props.apiKey}&pageSize=${this.props.pageSize}&page=` +
-            newPage;
+            `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&from=${todayDate}&sortBy=publishedAt&apiKey=${this.props.apiKey}&pageSize=${this.props.pageSize}&page=${this.state.page + 1}`;
         console.log(url);
+        this.setState({page : this.state.page + 1});
         let data = await fetch(url);
         let parsedData = await data.json();
         console.log(parsedData);
@@ -117,7 +115,7 @@ export class News extends Component {
     render() {
         return (
             <div className="container my-3">
-                <h1 className="text-center" style={{ margin: "35px 0px" }}>
+                <h1 className="text-center" style={{ margin: "35px 0px", marginTop: "90px" }}>
                     {" "}
                     NewsMonkey -- Top {this.capitalizestr(this.props.category)} Headlines
                 </h1>
